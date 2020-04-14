@@ -1,0 +1,25 @@
+# PasswordManager app
+
+bin/*
+
+# env file
+config/env.dev.toml
+config/env.test.toml
+
+# vendor folder
+vendor/*
+
+# idea folder created by JetBrains
+.idea/
+
+# vscode folder
+.vscode/*
+
+# Desktop Services Store
+.DS_Store
+
+# Storage Logs
+storage/
+
+# build files
+build/
