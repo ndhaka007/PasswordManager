@@ -1,13 +1,13 @@
 package main
 
 import (
+	"PasswordManager/internal/constants"
 	"database/sql"
 	"flag"
 	"fmt"
-	"github.com/ndhaka007/PasswordManager/internal/constants"
 	"os"
 
-	"github.com/ndhaka007/PasswordManager/internal/config"
+	"PasswordManager/internal/config"
 
 	"github.com/pressly/goose"
 
@@ -35,7 +35,7 @@ func main() {
 
 	if len(args) > 1 && args[0] == CREATE {
 		if err := goose.Run(CREATE, nil, *dir, args[1:]...); err != nil {
-			//logger.Get(nil).Fatalf("goose run: %v", err)
+			fmt.Printf("goose run: %v", err)
 		}
 
 		return
@@ -64,13 +64,13 @@ func main() {
 	dbstring := databaseConfig.URL()
 
 	if err := goose.SetDialect(driver); err != nil {
-		//logger.Get(nil).Fatal(err)
+		fmt.Print(err)
 	}
 
 	db, err := sql.Open(driver, dbstring)
 
 	if err != nil {
-		//logger.Get(nil).Fatalf("-dbstring=%q: %v\n", dbstring, err)
+		fmt.Printf("-dbstring=%q: %v \n", dbstring, err)
 	}
 
 	arguments := []string{}
@@ -80,7 +80,7 @@ func main() {
 	}
 
 	if err := goose.Run(command, db, *dir, arguments...); err != nil {
-		//logger.Get(nil).Fatalf("goose run: %v", err)
+		fmt.Print("goose run: ", err)
 	}
 }
 
