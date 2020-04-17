@@ -10,15 +10,15 @@ type Database struct {
 	Protocol           string `toml:"protocol"`
 	Host               string `toml:"host"`
 	Port               int    `toml:"port"`
-	Username           string `env:"username"`
-	Password           string `env:"password"`
+	Username           string `toml:"username"`
+	Password           string `toml:"password"`
 	Name               string `toml:"name"`
 	MaxOpenConnections int    `toml:"max_open_connections"`
 	MaxIdleConnections int    `toml:"max_idle_connections"`
 }
 
 // SqlConnectionDSNFormat : DSN for connecting mysql
-const SqlConnectionDSNFormat = "%s:%s@%s(%s:%d)/%s"
+const SqlConnectionDSNFormat = "%s:%s@%s(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local"
 
 // URL : gives formatted postgresql url.
 func (c Database) URL() string {
