@@ -1,4 +1,4 @@
-- create local mysql database
-- set database username and password as env variable 
-`export DATABASE_PASSWORD={password}`
-`export DATABASE_USERNAME={username}`
+# Password Manager
+## For setup
+- requirement `go installed`
+- Run `make help` for available build/run options.
