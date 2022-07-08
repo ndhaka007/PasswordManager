@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package passwordmanager.user.v1;
+
+option go_package = "passwordmanager/user/v1;userv1";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+message Response {
+  string name   = 1;
+}
+
+service UserAPI {
+  rpc Signup(google.protobuf.Empty) returns (Response) {
+    option (google.api.http) = { post: "/v1/signup" };
+  }
+
+  rpc Login(google.protobuf.Empty) returns (Response) {
+    option (google.api.http) = { post: "/v1/login" };
+  }
+
+}

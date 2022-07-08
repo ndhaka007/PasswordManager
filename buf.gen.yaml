@@ -1,0 +1,20 @@
+version: v1beta1
+managed: true
+plugins:
+  # Generate plain old .pb.go files
+  # Not all proto definitions will have a service defined.
+  # We build .pb.go files for those files.
+  - name: go
+    out: rpc/
+    opt:
+      - paths=source_relative
+  # generate grpc-gateway files for the protobuf files with a service defined.
+  - name: grpc-gateway
+    out: rpc/
+    opt:
+      - paths=source_relative
+  - name: go-grpc
+    out: rpc/
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
